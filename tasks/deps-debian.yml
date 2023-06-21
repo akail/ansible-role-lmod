@@ -6,6 +6,7 @@
     systemd-run
       --property="After=apt-daily.service apt-daily-upgrade.service"
       --wait /bin/true
+  changed_when: false
 
 - name: install lmod dependencies
   ansible.builtin.apt:
