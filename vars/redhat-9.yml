@@ -2,6 +2,7 @@
 
 lmod_os_repos:
   - powertools 
+  - crb
 
 lmod_os_packages:
   - bc

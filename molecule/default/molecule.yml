@@ -1,0 +1,24 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: docker
+platforms:
+  - name: instance-el8
+    image: rockylinux:8
+    privileged: true
+    pre_build_image: true
+  - name: instance-el9
+    image: rockylinux:9
+    privileged: true
+    pre_build_image: true
+  - name: instance-ub20
+    image: ubuntu:20.04
+    dockerfile: Dockerfile-Ubuntu.j2
+    privileged: true
+    pre_build_image: false
+provisioner:
+  name: ansible
+verifier:
+  name: ansible
+role_name_check: 2

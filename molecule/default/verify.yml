@@ -1,0 +1,20 @@
+---
+# This is an example playbook to execute Ansible tests.
+
+- name: Verify
+  hosts: all
+  gather_facts: false
+  tasks:
+  - name: Verify module command works
+    ansible.builtin.shell: |
+      source /etc/profile.d/z00-lmod.sh
+      module avail
+    changed_when: false
+    register: module_rc
+    args:
+      executable: /bin/bash
+
+  - name: Assert return code
+    ansible.builtin.assert:
+      that:
+        - not module_rc.rc

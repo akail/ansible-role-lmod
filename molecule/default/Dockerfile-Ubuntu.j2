@@ -1,0 +1,9 @@
+{% if item.registry is defined %}
+FROM {{ item.registry.url }}/{{ item.image }}
+{% else %}
+FROM {{ item.image }}
+{% endif %}
+
+RUN apt update && apt -y install python3 ca-certificates
+
+RUN echo "#!/usr/bin/bash\nexit 0" >> /usr/bin/systemd-run && chmod 755 /usr/bin/systemd-run
